@@ -1,14 +1,13 @@
 # Base image
-FROM node:alpine
-
-WORKDIR  /usr/app
+FROM node:alpine as builder
+WORKDIR  /app
 
 #Dependecies
-COPY ./package.json ./
+COPY ./package.json .
 
 RUN npm install
-
 COPY ./ ./
+RUN npm run build
 
-#Default commands
-CMD ["npm", "start"]
+FROM nginx
+COPY --from=builder /app/build /usr/share/nginx

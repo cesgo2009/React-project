@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install
+  - docker build -t cesgo/React-project -f Dockerfile.dev
+
+script:
+  - docker run  cesgo/React-project run test -- --coverage
