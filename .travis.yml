@@ -9,3 +9,18 @@ before_install:
 
 script:
     - docker run  cesgo2009/React-project run test -- --coverage
+
+deploy:
+ provider: elasticbeanstalk
+ region: "us-east-1"
+ app: "Docker-project"
+ env: "Docker-env"
+ bucket_name: ""
+ bucket_path: "Docker-project"
+ on:
+   branch: master
+ access_key: $AWS_ACCESS_KEY
+ secret_access_key: 
+  secure: "$AWS_SECRET_KEY"
+ 
+   
