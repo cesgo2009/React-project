@@ -4,8 +4,8 @@ os: windows
 services:
    - docker
 
-before_install
+before_install:
   - docker build -t cesgo2009/React-project -f Dockerfile.dev
 
-script
+script:
     - docker run  cesgo2009/React-project run test -- --coverage
