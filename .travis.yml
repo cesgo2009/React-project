@@ -1,10 +1,10 @@
-sudo: required
+os: windows
 
 services:
   - docker
 
 before_install
-  - docker build -t cesgo/React-project -f Dockerfile.dev
+  - docker build -t cesgo2009/React-project -f Dockerfile.dev
 
 script:
-  - docker run  cesgo/React-project run test -- --coverage
+  - docker run  cesgo2009/React-project run test -- --coverage
